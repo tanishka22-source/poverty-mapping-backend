@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Authority Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Urban Aid Authority Dashboard</h1>
+    <p class="subtitle">Priority-based emergency cases</p>
+
+    {% for case in cases %}
+    <div class="card">
+        <p><strong>Area:</strong> {{ case.area }}</p>
+        <p><strong>Emergency:</strong> {{ case.emergency }}</p>
+        <p><strong>Urgency Score:</strong> {{ case.score }}</p>
+        <p class="status {{ case.color }}">{{ case.risk }}</p>
+    </div>
+    {% else %}
+    <p>No cases submitted yet.</p>
+    {% endfor %}
+
+    <a href="/" class="back">Back to Home</a>
+</div>
+
+</body>
+</html>

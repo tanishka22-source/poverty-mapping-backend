@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Urban Aid Urgency Engine</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Urban Emergency Need Prediction System</h1>
+    <p class="subtitle">Assess and prioritize emergency aid in urban areas</p>
+
+    <form action="/analyze" method="post">
+        <label>Area / Location</label>
+        <input type="text" name="area" required>
+
+        <label>Emergency Type</label>
+        <select name="emergency">
+            <option>Medical</option>
+            <option>Food</option>
+            <option>Shelter</option>
+            <option>Disaster</option>
+        </select>
+
+        <label>Monthly Income (₹)</label>
+        <input type="number" name="income" required>
+
+        <label>Family Size</label>
+        <input type="number" name="family_size" required>
+
+        <button type="submit">Analyze Urgency</button>
+    </form>
+</div>
+
+</body>
+</html>
