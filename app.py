@@ -53,4 +53,26 @@ if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+from flask import jsonify
+
+@app.route("/api/analyze", methods=["POST"])
+def analyze():
+    data = request.get_json()
+
+    income = int(data.get("income"))
+    family_size = int(data.get("family_size"))
+
+    score = income / family_size
+
+    if score < 3000:
+        risk = "High Poverty Risk"
+    elif score < 7000:
+        risk = "Moderate Poverty Risk"
+    else:
+        risk = "Low Poverty Risk"
+
+    return jsonify({
+        "poverty_score": score,
+        "risk_level": risk
+    })
 
