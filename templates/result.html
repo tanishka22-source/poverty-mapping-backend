@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Urgency Result</title>
+    <title>Submission Result</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>Urgency Assessment Result</h1>
+<h2>Request Submitted Successfully</h2>
 
-    <div class="card">
-        <p><strong>Area:</strong> {{ area }}</p>
-        <p><strong>Emergency Type:</strong> {{ emergency }}</p>
-        <p><strong>Urgency Score:</strong> {{ score }}</p>
-        <p class="status {{ color }}">{{ risk }}</p>
-    </div>
+<p><strong>Detected Risk Level:</strong> {{ risk }}</p>
 
-    <a href="/" class="back">Analyze Another Case</a>
-</div>
+<p>Your request has been sent to nearby NGOs.</p>
+
+<a href="/">Submit another request</a>
 
 </body>
 </html>

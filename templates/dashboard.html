@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Authority Dashboard</title>
-    <link rel="stylesheet" href="/static/style.css">
+  <title>Dashboard</title>
 </head>
 <body>
+  <h1>NGO / Admin Dashboard</h1>
 
-<div class="container">
-    <h1>Urban Aid Authority Dashboard</h1>
-    <p class="subtitle">Priority-based emergency cases</p>
+  {% if reports|length == 0 %}
+    <p>No reports yet</p>
+  {% else %}
+    <table border="1" cellpadding="10">
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Proof</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
 
-    {% for case in cases %}
-    <div class="card">
-        <p><strong>Area:</strong> {{ case.area }}</p>
-        <p><strong>Emergency:</strong> {{ case.emergency }}</p>
-        <p><strong>Urgency Score:</strong> {{ case.score }}</p>
-        <p class="status {{ case.color }}">{{ case.risk }}</p>
-    </div>
-    {% else %}
-    <p>No cases submitted yet.</p>
-    {% endfor %}
+      {% for r in reports %}
+      <tr>
+        <td>{{ r.name }}</td>
+        <td>{{ r.location }}</td>
+        <td>{{ r.proof }}</td>
+        <td>{{ r.time }}</td>
+        <td>{{ r.status }}</td>
+        <td>
+          <a href="/toggle_status/{{ loop.index0 }}">Toggle Status</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
 
-    <a href="/" class="back">Back to Home</a>
-</div>
-
+  <br>
+  <a href="/">Back to Form</a>
 </body>
 </html>
